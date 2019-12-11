@@ -1,32 +1,29 @@
 import React from 'react';
+import Slider from 'react-rangeslider';
+import 'react-rangeslider/lib/index.css';
+import { images } from '../constants/images';
 
-const images = [
-  { id: 1, src: require('../assets/1.jpg') },
-  { id: 2, src: require('../assets/2.jpg') },
-  { id: 3, src: require('../assets/3.jpg') },
-  { id: 4, src: require('../assets/4.jpg') },
-  { id: 5, src: require('../assets/5.jpg') }
-];
+const imageNodes = images.map(image => <img key={image.id} src={image.src} />);
+const imageCache = images.map(image => (
+  <img key={image.id} src={image.src} style={{ visibility: 'hidden' }} />
+));
 
-const App: React.FC = () => {
+const App = () => {
+  const [volume, setVolume] = React.useState<number>(0);
+
+  const handleOnChange = (value: number) => {
+    setVolume(value);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {images.map(image => (
-            <img src={image.src} />
-          ))}
-        </a>
-      </header>
-    </div>
+    <>
+      <div style={{ height: '50px', width: '100px', userSelect: 'none' }}>
+        {imageNodes[volume]}
+        {imageCache}
+      </div>
+      <div style={{ width: '500px', marginLeft: '50px' }}>
+        <Slider value={volume} max={93} tooltip={false} onChange={handleOnChange} />
+      </div>
+    </>
   );
 };
 
