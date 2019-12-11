@@ -5,7 +5,7 @@ import { images } from '../constants/images';
 
 const imageNodes = images.map(image => <img key={image.id} src={image.src} />);
 const imageCache = images.map(image => (
-  <img key={image.id} src={image.src} style={{ visibility: 'hidden' }} />
+  <img key={image.id} src={image.src} style={{ visibility: 'hidden', overflow: 'hidden' }} />
 ));
 
 const App = () => {
@@ -15,7 +15,7 @@ const App = () => {
     setVolume(value);
   };
   return (
-    <>
+    <div style={{ position: 'fixed' }}>
       <div style={{ height: '50px', width: '100px', userSelect: 'none' }}>
         {imageNodes[volume]}
         {imageCache}
@@ -23,7 +23,7 @@ const App = () => {
       <div style={{ width: '500px', marginLeft: '50px' }}>
         <Slider value={volume} max={93} tooltip={false} onChange={handleOnChange} />
       </div>
-    </>
+    </div>
   );
 };
 
