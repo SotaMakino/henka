@@ -4,9 +4,7 @@ import 'react-rangeslider/lib/index.css';
 import { images } from '../constants/images';
 
 const imageNodes = images.map(image => <img key={image.id} src={image.src} />);
-const imageCache = images.map(image => (
-  <img key={image.id} src={image.src} style={{ opacity: 0 }} />
-));
+const imageCache = images.map(image => <img key={image.id} src={image.src} />);
 
 const App = () => {
   const [volume, setVolume] = React.useState<number>(0);
