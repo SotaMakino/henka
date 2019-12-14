@@ -1,8 +1,9 @@
 import React from 'react';
 import Slider from 'react-rangeslider';
-import 'react-rangeslider/lib/index.css';
 import ImgPreloader from 'react-img-preloader';
 import styled from 'styled-components';
+import LoadingScreen from 'react-loading-screen';
+import '../styles/slider.css';
 
 type Props = {
   images: {
@@ -16,6 +17,7 @@ const IMAGE_BUFFER = 1;
 const ImageRender = (props: Props) => {
   const { images } = props;
   const [volume, setVolume] = React.useState<number>(0);
+  const [isLoading, setIsLoading] = React.useState<boolean>(true);
   const handleOnChange = React.useCallback((value: number) => {
     setVolume(value);
   }, []);
@@ -38,12 +40,17 @@ const ImageRender = (props: Props) => {
       <ImgPreloader
         imgs={preloadedImages}
         onComplete={() => {
-          console.log('All images are loaded');
+          setIsLoading(false);
         }}
       >
         {({ loaded, total }: any) => (
           <Loading>
-            {loaded}/{total}
+            <LoadingScreen
+              loading={isLoading}
+              bgColor="#f1f1f1"
+              textColor="#676767"
+              text={`${loaded} / ${total}`}
+            ></LoadingScreen>
           </Loading>
         )}
       </ImgPreloader>
@@ -68,24 +75,25 @@ const ImageRender = (props: Props) => {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 20px;
 `;
 const Loading = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 100px;
+  font-size: 150px;
 `;
 const ImageView = styled.div`
-  padding: 30px;
-  object-fit: cover;
+  margin-top: -7%;
   user-select: none;
+  pointer-events: none;
   text-align: center;
 `;
 const SliderWrapper = styled.div`
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  top: -50px;
+  left: 1%;
+  right: auto;
+  max-width: 500px;
   padding: 0 400px;
+  text-align: center;
 `;
 
 export default ImageRender;
