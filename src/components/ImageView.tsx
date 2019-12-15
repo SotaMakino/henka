@@ -37,7 +37,7 @@ const ImageWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: -2%;
+  margin-top: -8%;
   pointer-events: none;
 `;
 const ImageStyled = styled.img<{ isHidden?: boolean }>`
