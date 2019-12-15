@@ -3,12 +3,12 @@ import Slider from 'react-rangeslider';
 import styled from 'styled-components';
 import Loading from './LoadingView';
 import ImageView, { IMAGE_BUFFER } from './ImageView';
-import ImageStore from '../stores/ImageSliderStore';
+import ImageSliderStore from '../stores/ImageSliderStore';
 import '../styles/slider.css';
 import { observer } from 'mobx-react-lite';
 
 type Props = {
-  store: ImageStore;
+  store: ImageSliderStore;
 };
 
 const ImageRender = observer((props: Props) => {
@@ -29,19 +29,14 @@ const ImageRender = observer((props: Props) => {
   );
 });
 
-const Wrapper = styled.div`
+const Wrapper = styled.div``;
+const SliderWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20px;
-`;
-const SliderWrapper = styled.div`
-  position: relative;
-  top: -50px;
-  left: 1%;
-  right: auto;
-  max-width: 500px;
-  padding: 0 400px;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
+  min-width: 150px;
+  padding: 0 30px;
 `;
 
 export default ImageRender;

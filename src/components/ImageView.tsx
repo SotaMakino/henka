@@ -34,12 +34,16 @@ const ImageView = (props: Props) => {
 };
 
 const ImageWrapper = styled.div`
-  width: 100%;
-  height: auto;
-  margin-top: -7%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -2%;
   pointer-events: none;
 `;
 const ImageStyled = styled.img<{ isHidden?: boolean }>`
+  object-fit: contain;
+  width: 100%;
+  height: auto;
   display: ${props => (props.isHidden ? 'none' : 'inherit')};
 `;
 

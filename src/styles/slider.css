@@ -6,6 +6,8 @@
   background: #a5a5a5;
   -ms-touch-action: none;
   touch-action: none;
+  width: 50%;
+  min-width: 200px;
 }
 
 .rangeslider,
