@@ -4,12 +4,11 @@ import styled from 'styled-components';
 import '../styles/slider.css';
 import { Image } from '../types/image';
 import Loading from './LoadingView';
+import ImageView, { IMAGE_BUFFER } from './ImageView';
 
 type Props = {
   images: Image[];
 };
-
-const IMAGE_BUFFER = 1;
 
 const ImageRender = (props: Props) => {
   const { images } = props;
@@ -17,33 +16,16 @@ const ImageRender = (props: Props) => {
   const handleOnChange = React.useCallback((value: number) => {
     setVolume(value);
   }, []);
-
-  const imageNodes = React.useMemo(() => images.map(image => <img src={image.src} alt="" />), [
-    images
-  ]);
-  const imageCaches = React.useMemo(
-    () => images.map(image => <img src={image.src} style={{ display: 'none' }} alt="" />),
-    [images]
-  );
   const preloadedImages = React.useMemo(() => images.map(image => image.src), [images]);
-  const loadImage = React.useMemo(
-    () => (index: number) => (volume === index ? imageNodes[index] : imageCaches[index]),
-    [volume]
-  );
 
   return (
     <Wrapper>
       <Loading images={preloadedImages} />
-      <ImageView>
-        {loadImage(volume - IMAGE_BUFFER)}
-        {loadImage(volume)}
-        {loadImage(volume + IMAGE_BUFFER)}
-        {imageCaches}
-      </ImageView>
+      <ImageView images={images} volume={volume} />
       <SliderWrapper>
         <Slider
           value={volume}
-          max={imageNodes.length - IMAGE_BUFFER}
+          max={images.length - IMAGE_BUFFER}
           tooltip={false}
           onChange={handleOnChange}
         />
@@ -56,12 +38,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
-`;
-const ImageView = styled.div`
-  margin-top: -7%;
-  user-select: none;
-  pointer-events: none;
-  text-align: center;
 `;
 const SliderWrapper = styled.div`
   position: relative;

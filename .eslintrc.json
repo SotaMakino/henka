@@ -22,7 +22,7 @@
   "plugins": ["@typescript-eslint"],
   "rules": {
     "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-unused-vars": 0,
     "lines-between-class-members": [
       "error",
       "always",
