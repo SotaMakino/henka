@@ -1,6 +1,8 @@
 import { observable, computed, action } from 'mobx';
 import { Image } from '../types/image';
 
+export const IMAGE_BUFFER = 1;
+
 export default class ImageSliderStore {
   @observable.shallow images: Image[];
   @observable volume: number;

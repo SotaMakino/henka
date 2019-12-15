@@ -2,8 +2,8 @@ import React from 'react';
 import Slider from 'react-rangeslider';
 import styled from 'styled-components';
 import Loading from './LoadingView';
-import ImageView, { IMAGE_BUFFER } from './ImageView';
-import ImageSliderStore from '../stores/ImageSliderStore';
+import ImageView from './ImageView';
+import ImageSliderStore, { IMAGE_BUFFER } from '../stores/ImageSliderStore';
 import '../styles/slider.css';
 import { observer } from 'mobx-react-lite';
 

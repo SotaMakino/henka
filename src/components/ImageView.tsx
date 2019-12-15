@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Image } from '../types/image';
+import { IMAGE_BUFFER } from '../stores/ImageSliderStore';
 
 type Props = {
   images: Image[];
   volume: number;
 };
-
-export const IMAGE_BUFFER = 1;
 
 const ImageView = (props: Props) => {
   const { images, volume } = props;
