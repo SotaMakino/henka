@@ -1,38 +1,33 @@
 import React from 'react';
 import Slider from 'react-rangeslider';
 import styled from 'styled-components';
-import '../styles/slider.css';
-import { Image } from '../types/image';
 import Loading from './LoadingView';
 import ImageView, { IMAGE_BUFFER } from './ImageView';
+import ImageStore from '../stores/ImageSliderStore';
+import '../styles/slider.css';
+import { observer } from 'mobx-react-lite';
 
 type Props = {
-  images: Image[];
+  store: ImageStore;
 };
 
-const ImageRender = (props: Props) => {
-  const { images } = props;
-  const [volume, setVolume] = React.useState<number>(0);
-  const handleOnChange = React.useCallback((value: number) => {
-    setVolume(value);
-  }, []);
-  const preloadedImages = React.useMemo(() => images.map(image => image.src), [images]);
-
+const ImageRender = observer((props: Props) => {
+  const { store } = props;
   return (
     <Wrapper>
-      <Loading images={preloadedImages} />
-      <ImageView images={images} volume={volume} />
+      <Loading images={store.imageUrls} />
+      <ImageView images={store.images} volume={store.volume} />
       <SliderWrapper>
         <Slider
-          value={volume}
-          max={images.length - IMAGE_BUFFER}
+          value={store.volume}
+          max={store.imageSize - IMAGE_BUFFER}
           tooltip={false}
-          onChange={handleOnChange}
+          onChange={store.setVolume}
         />
       </SliderWrapper>
     </Wrapper>
   );
-};
+});
 
 const Wrapper = styled.div`
   display: flex;
