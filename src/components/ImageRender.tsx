@@ -1,11 +1,9 @@
 import React from 'react';
 import Slider from 'react-rangeslider';
-import ImgPreloader from 'react-img-preloader';
 import styled from 'styled-components';
-import LoadingScreen from 'react-loading-screen';
 import '../styles/slider.css';
 import { Image } from '../types/image';
-import { Loader } from '../types/loader';
+import Loading from './LoadingView';
 
 type Props = {
   images: Image[];
@@ -16,7 +14,6 @@ const IMAGE_BUFFER = 1;
 const ImageRender = (props: Props) => {
   const { images } = props;
   const [volume, setVolume] = React.useState<number>(0);
-  const [isLoading, setIsLoading] = React.useState<boolean>(true);
   const handleOnChange = React.useCallback((value: number) => {
     setVolume(value);
   }, []);
@@ -36,23 +33,7 @@ const ImageRender = (props: Props) => {
 
   return (
     <Wrapper>
-      <ImgPreloader
-        imgs={preloadedImages}
-        onComplete={() => {
-          setIsLoading(false);
-        }}
-      >
-        {({ loaded, total }: Loader) => (
-          <Loading>
-            <LoadingScreen
-              loading={isLoading}
-              bgColor="#f1f1f1"
-              textColor="#676767"
-              text={`${loaded} / ${total}`}
-            ></LoadingScreen>
-          </Loading>
-        )}
-      </ImgPreloader>
+      <Loading images={preloadedImages} />
       <ImageView>
         {loadImage(volume - IMAGE_BUFFER)}
         {loadImage(volume)}
@@ -75,9 +56,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
-`;
-const Loading = styled.div`
-  font-size: 150px;
 `;
 const ImageView = styled.div`
   margin-top: -7%;
