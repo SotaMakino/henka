@@ -4,12 +4,11 @@ import ImgPreloader from 'react-img-preloader';
 import styled from 'styled-components';
 import LoadingScreen from 'react-loading-screen';
 import '../styles/slider.css';
+import { Image } from '../types/image';
+import { Loader } from '../types/loader';
 
 type Props = {
-  images: {
-    id: number;
-    src: any;
-  }[];
+  images: Image[];
 };
 
 const IMAGE_BUFFER = 1;
@@ -43,7 +42,7 @@ const ImageRender = (props: Props) => {
           setIsLoading(false);
         }}
       >
-        {({ loaded, total }: any) => (
+        {({ loaded, total }: Loader) => (
           <Loading>
             <LoadingScreen
               loading={isLoading}
