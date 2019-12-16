@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Image } from '../types/image';
-import { IMAGE_BUFFER } from '../stores/ImageSliderStore';
 
 type Props = {
   images: Image[];
@@ -24,9 +23,7 @@ const ImageView = (props: Props) => {
 
   return (
     <ImageWrapper>
-      {loadedImages(volume - IMAGE_BUFFER)}
       {loadedImages(volume)}
-      {loadedImages(volume + IMAGE_BUFFER)}
       {imageCaches}
     </ImageWrapper>
   );
@@ -44,7 +41,7 @@ const ImageStyled = styled.img<{ isHidden?: boolean }>`
   object-fit: contain;
   width: 100%;
   height: auto;
-  display: ${props => (props.isHidden ? 'none' : 'inherit')};
+  display: ${props => (props.isHidden ? 'none' : 'block')};
 `;
 
 export default ImageView;
