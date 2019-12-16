@@ -38,6 +38,7 @@ const ImageWrapper = styled.div`
   align-items: center;
   margin-top: -8%;
   pointer-events: none;
+  user-select: none;
 `;
 const ImageStyled = styled.img<{ isHidden?: boolean }>`
   object-fit: contain;
