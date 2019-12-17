@@ -17,8 +17,8 @@
 }
 
 .rangeslider .rangeslider__handle {
-  background: #fff;
-  border: 1px solid #ccc;
+  background: #a5a5a5;
+  border: 1px solid #a5a5a5;
   cursor: pointer;
   display: inline-block;
   position: absolute;
