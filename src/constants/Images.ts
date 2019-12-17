@@ -257,6 +257,5 @@ export const KonaImages = [
   { id: 48, src: require('../assets/Kona/48.jpg') },
   { id: 49, src: require('../assets/Kona/49.jpg') },
   { id: 50, src: require('../assets/Kona/50.jpg') },
-  { id: 51, src: require('../assets/Kona/51.jpg') },
-  { id: 52, src: require('../assets/Kona/52.jpg') }
+  { id: 51, src: require('../assets/Kona/51.jpg') }
 ];

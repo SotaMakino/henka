@@ -9,13 +9,17 @@ import { observer } from 'mobx-react-lite';
 
 type Props = {
   store: ImageSliderStore;
+  title: string;
 };
 
 const ImageRender = observer((props: Props) => {
-  const { store } = props;
+  const { store, title } = props;
   return (
     <Wrapper>
       <Loading images={store.imageUrls} />
+      <TitleWrapper>
+        <TitleImage src={title} />
+      </TitleWrapper>
       <ImageView images={store.images} volume={store.volume} />
       <SliderWrapper>
         <Slider
@@ -29,7 +33,20 @@ const ImageRender = observer((props: Props) => {
   );
 });
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  padding: 50px;
+`;
+const TitleWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  user-select: none;
+`;
+const TitleImage = styled.img`
+  width: 30%;
+  z-index: 0;
+`;
 const SliderWrapper = styled.div`
   display: flex;
   flex-direction: column;

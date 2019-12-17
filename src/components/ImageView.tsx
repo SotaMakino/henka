@@ -33,7 +33,7 @@ const ImageWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: -8%;
+  margin-top: -13%;
   pointer-events: none;
   user-select: none;
 `;
