@@ -1,10 +1,10 @@
 import React from 'react';
-import { images } from '../constants/images';
+import { RowImages } from '../constants/RowImages';
 import ImageRender from '../components/ImageRender';
 import ImageSliderStore from '../stores/ImageSliderStore';
 
 const Top = () => {
-  const store = new ImageSliderStore(images);
+  const store = new ImageSliderStore(RowImages);
   return <ImageRender store={store} />;
 };
 
