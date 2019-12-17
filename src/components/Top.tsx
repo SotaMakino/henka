@@ -1,11 +1,14 @@
 import React from 'react';
-import { RowImages } from '../constants/RowImages';
-import ImageRender from '../components/ImageRender';
-import ImageSliderStore from '../stores/ImageSliderStore';
+import { Link } from 'react-router-dom';
 
 const Top = () => {
-  const store = new ImageSliderStore(RowImages);
-  return <ImageRender store={store} />;
+  return (
+    <>
+      <Link to="/row">row</Link>
+      <Link to="/kona">kona</Link>
+      <Link to="/pla">pla</Link>
+    </>
+  );
 };
 
 export default Top;
