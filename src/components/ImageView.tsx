@@ -11,6 +11,8 @@ type Props = {
 const ImageView = (props: Props) => {
   const { images, volume } = props;
   const imageList: JSX.Element[] = [];
+
+  // Don't add keys because they make the app heavier, especially on iOS.
   const loadedImages = React.useMemo(
     () => (index: number) =>
       volume === index
