@@ -1,6 +1,6 @@
-# henka.netlify.com
+# [henka.netlify.com](https://henka.netlify.com/)
 
-Change images with the slider
+Change images with the slider.
 
 ### Quick Start
 
@@ -8,3 +8,7 @@ Change images with the slider
 yarn
 yarn run
 ```
+
+---
+
+This project was bootstrapped with Create React App.
