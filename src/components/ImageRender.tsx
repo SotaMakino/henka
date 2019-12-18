@@ -35,7 +35,11 @@ const ImageRender = observer((props: Props) => {
 
 const Wrapper = styled.div`
   padding: 50px;
-  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 `;
 const TitleWrapper = styled.div`
   display: flex;
