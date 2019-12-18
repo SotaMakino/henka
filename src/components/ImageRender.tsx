@@ -49,6 +49,7 @@ const TitleImage = styled.img`
   z-index: 0;
 `;
 const SliderWrapper = styled.div`
+  z-index: 999;
   display: flex;
   flex-direction: column;
   justify-content: center;

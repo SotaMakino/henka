@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Image } from '../types/image';
+import { IMAGE_BUFFER } from '../stores/ImageSliderStore';
 
 type Props = {
   images: Image[];
@@ -9,6 +10,7 @@ type Props = {
 
 const ImageView = (props: Props) => {
   const { images, volume } = props;
+  const imageList: JSX.Element[] = [];
   const loadedImages = React.useMemo(
     () => (index: number) =>
       volume === index
@@ -21,9 +23,13 @@ const ImageView = (props: Props) => {
     [images]
   );
 
+  images.map(i => {
+    imageList.push(loadedImages(i.id - IMAGE_BUFFER));
+  });
+
   return (
     <ImageWrapper>
-      {loadedImages(volume)}
+      {imageList}
       {imageCaches}
     </ImageWrapper>
   );
