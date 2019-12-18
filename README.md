@@ -6,8 +6,10 @@ Change images with the slider.
 
 ```
 yarn
-yarn run
+yarn start
 ```
+
+![image](src/assets/interface.png)
 
 ---
 
