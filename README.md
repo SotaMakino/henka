@@ -9,6 +9,8 @@ yarn
 yarn run
 ```
 
+![image](src/assets/interface.png)
+
 ---
 
 This project was bootstrapped with Create React App.
