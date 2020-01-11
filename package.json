@@ -33,7 +33,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint './src/components/*.{ts,tsx}'",
-    "deploy": "surge --domain http://poised-hair.surge.sh/"
+    "deploy": "now"
   },
   "eslintConfig": {
     "extends": "react-app"
