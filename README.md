@@ -1,4 +1,4 @@
-# [へんか](https://henka.now.com/)
+# [へんか](https://henka.now.sh/)
 
 Change images with the slider.
 
